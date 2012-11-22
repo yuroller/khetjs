@@ -5,7 +5,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/socket.io.min.js')
     script(type='text/javascript')
-      var socket = io.connect('http://khetjs.yuroller.c9.io');
+      var socket = io.connect('http://localhost');
       socket.on('news', function (data) {
         console.log(data);
         socket.emit('my other event', { my: 'data' });

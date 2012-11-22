@@ -34,7 +34,7 @@ app.get('/users', user.list);
 var server = http.createServer(app)
   , io = require('socket.io').listen(server);
 
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || 3000);
 
 io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
