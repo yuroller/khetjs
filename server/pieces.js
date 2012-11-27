@@ -39,7 +39,8 @@ var SURFACE = [
     ];
           
 var getColorFromSurface = function(surface, x, y) {
-    var c = surface[y][x],
+    var r = surface[y],
+        c = r[x],
         types = {
             'S': Color.SILVER,
             'R': Color.RED,
@@ -163,8 +164,8 @@ suite('getColorFromSurface', function(){
   test('should return red color at (0,0)', function(){
       assert.equal(getColorFromSurface(surface, 0, 0), Color.RED);
     });
-  test('should return silver color at (1,0)', function(){
-      assert.equal(getColorFromSurface(surface, 1, 0), Color.SILVER);
+  test('should return silver color at (0,1)', function(){
+      assert.equal(getColorFromSurface(surface, 0, 1), Color.SILVER);
     });    
 });
 
