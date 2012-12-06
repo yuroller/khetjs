@@ -29,6 +29,8 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/game',routes.game);
+app.get('/credits',routes.credits);
 
 
 var server = http.createServer(app)

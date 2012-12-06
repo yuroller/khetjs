@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 'use strict';
-var assert=require('assert');
 var util=require('util');
 
 var BOARD_W=10;
 var BOARD_H=8;
 
-var Orientation = {
+var Orientation = exports.Orientation={
     NONE: 0,
     NE: 1,
     SE: 2,
@@ -14,13 +13,13 @@ var Orientation = {
     NW: 4
 };
 
-var Color = {
+var Color = exports.Color={
     BLACK: 0,
     SILVER: 1,
     RED: 2
 };
 
-var PieceType = {
+var PieceType = exports.PieceType={
     PHARAOH: 1,
     DJED: 2,
     PYRAMID: 3,
@@ -38,7 +37,7 @@ var SURFACE = [
     'SRBBBBBBSR'
     ];
           
-var getColorFromSurface = function(surface, x, y) {
+var getColorFromSurface = exports.getColorFromSurface= function(surface, x, y) {
     var r = surface[y],
         c = r[x],
         types = {
@@ -80,12 +79,12 @@ var SETUP_CLASSIC = [
     {x: 5, y: 7, t: PieceType.OBELISK,      c: Color.RED,       o: Orientation.NONE}
 ];
 
-var getPiecesFromSetup = function (setup, x, y) {
+var getPiecesFromSetup= exports.getPiecesFromSetup = function (setup, x, y) {
     var pieces = [],
         s;
     for (s in setup) {
-        if (s.x === x && s.y === y) {
-            pieces.push(s);
+        if (setup[s].x === x && setup[s].y === y) {
+            pieces.push(setup[s]);
         }
     }
     return pieces;
@@ -96,7 +95,7 @@ var getPiecesFromSetup = function (setup, x, y) {
 // Piece
 ///////////////////////////////////////////////////////////////////////////
 
-var Piece = function(pieceType, color, orientation) {
+var Piece = exports.Piece= function(pieceType, color, orientation) {
     this.pieceType = pieceType;
     this.color = color;
     this.orientation = orientation;    
@@ -150,22 +149,11 @@ var Board = function(surface, setup) {
     }
 };
 
+exports.Board=Board;
+exports.SURFACE=SURFACE;
+exports.SETUP_CLASSIC=SETUP_CLASSIC;
 
-///////////////////////////////////////////////////////////////////////////
-// Test
-///////////////////////////////////////////////////////////////////////////
 
 
-suite('getColorFromSurface', function(){
-  var surface;
-  setup(function(){
-    surface = ['RBS', 'SBR'];
-  });
-  test('should return red color at (0,0)', function(){
-      assert.equal(getColorFromSurface(surface, 0, 0), Color.RED);
-    });
-  test('should return silver color at (0,1)', function(){
-      assert.equal(getColorFromSurface(surface, 0, 1), Color.SILVER);
-    });    
-});
+
 
