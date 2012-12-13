@@ -1,7 +1,36 @@
 doctype 5
 html
   head
-    title  Khetjs game
-    link(rel='stylesheet', href='/stylesheets/style.css')    
+    title Khetjs game
+    link(rel='stylesheet', href='/stylesheets/style.css')   
+    script(src='/javascripts/jquery-1.8.3.min.js')
+    script(src='/javascripts/socket.io.min.js')
+    script(type='text/javascript')
+      var socket = io.connect('#{server_addr}');
+      socket.on('status_board', function (status) {
+        var x, y;
+        for (y = 0; y < 8; y += 1) {
+          for (x = 0; x < 10; x += 1) {
+            $('#x' + x + 'y' + y).html(status[y][x]);
+          }
+        }
+      });
+      var requestBoard = function() {
+        socket.emit('request_board');
+      };
+
   body
-    p= board
+    p
+      a(href='javascript:void(0)', onClick='javascript:requestBoard()') [Request board]
+    p
+      table
+        tbody
+          - var x, y
+          - for (y = 0; y < 8; y += 1) {
+          tr
+            - for (x = 0; x < 10; x += 1) {
+            td
+              div(id='x#{x}y#{y}') A
+            - }
+          - }
+       

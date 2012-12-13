@@ -2,8 +2,8 @@
 'use strict';
 var util=require('util');
 
-var BOARD_W=10;
-var BOARD_H=8;
+var BOARD_W = exports.BOARD_W = 10;
+var BOARD_H = exports.BOARD_H = 8;
 
 var Orientation = exports.Orientation={
     NONE: 0,
@@ -20,10 +20,10 @@ var Color = exports.Color={
 };
 
 var PieceType = exports.PieceType={
-    PHARAOH: 1,
-    DJED: 2,
-    PYRAMID: 3,
-    OBELISK: 4    
+    PHARAOH: 'h',
+    DJED: 'd',
+    PYRAMID: 'p',
+    OBELISK: 'o'    
 };
 
 var SURFACE = [
