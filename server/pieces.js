@@ -79,12 +79,13 @@ var SETUP_CLASSIC = [
     {x: 5, y: 7, t: PieceType.OBELISK,      c: Color.RED,       o: Orientation.NONE}
 ];
 
-var getPiecesFromSetup= exports.getPiecesFromSetup = function (setup, x, y) {
+var getPiecesFromSetup = exports.getPiecesFromSetup = function (setup, x, y) {
     var pieces = [],
-        s;
-    for (s in setup) {
-        if (setup[s].x === x && setup[s].y === y) {
-            pieces.push(setup[s]);
+        i,
+        l = setup.length;
+    for (i = 0; i < l; i += 1) {
+        if (setup[i].x === x && setup[i].y === y) {
+            pieces.push(setup[i]);
         }
     }
     return pieces;

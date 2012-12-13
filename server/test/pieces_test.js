@@ -22,10 +22,13 @@ suite('getColorFromSurface', function(){
 suite('getPiecesFromSetup', function(){
   var s;
   setup(function(){
-    s= [
-        {x: 4, y: 0, t: pieces.PieceType.OBELISK,      c: pieces.Color.SILVER,    o: pieces.Orientation.NONE}];
+    s = [{x: 4, y: 0, t: pieces.PieceType.OBELISK, c: pieces.Color.SILVER, o: pieces.Orientation.NONE}];
   });
   test('should return [OBELISK] at (4,0)', function(){
-      assert.deepEqual(pieces.getPiecesFromSetup(s, 4, 0), [new pieces.Piece(pieces.PieceType.OBELISK,pieces.Color.SILVER,pieces.Orientation.NONE)]);
+      var p = pieces.getPiecesFromSetup(s, 4, 0);
+      assert.equal(p.length, 1);
+      assert.equal(p[0].t, pieces.PieceType.OBELISK);
+      assert.equal(p[0].c, pieces.Color.SILVER);
+      assert.equal(p[0].o, pieces.Orientation.NONE);
     });
 });
