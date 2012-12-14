@@ -8,7 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , pieces = require('./pieces');
+  , khet = require('./lib/khet');
 
 var app = express();
 
@@ -39,13 +39,13 @@ var server = http.createServer(app)
 
 server.listen(process.env.PORT || 3000);
 
-var board = new pieces.Board(pieces.SURFACE, pieces.SETUP_CLASSIC);
+var board = new khet.Board(khet.SURFACE, khet.SETUP_CLASSIC);
 
 var translitterate = function (p) {
   if (p.length === 0) {
     return ' ';
   } else if (p.length === 2) {
-    if (p[0].t !== p[1].t || p[0].t !== pieces.PieceType.OBELISK) {
+    if (p[0].t !== p[1].t || p[0].t !== khet.PieceType.OBELISK) {
       throw new Error('Wrong double pieces');
     }
     return p[0].t.toUpperCase();
@@ -55,9 +55,9 @@ var translitterate = function (p) {
 
 var renderBoard = function (board) {
   var x, y, r = [], p;
-  for (y = 0; y < pieces.BOARD_H; y += 1) {
+  for (y = 0; y < khet.BOARD_H; y += 1) {
     r[y] = [];
-    for (x = 0; x < pieces.BOARD_W; x += 1) {
+    for (x = 0; x < khet.BOARD_W; x += 1) {
       p = board[y][x];
       r[y][x] = translitterate(p.pieces);
     }
