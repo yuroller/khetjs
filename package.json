@@ -1,13 +1,33 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "khetjs",
+  "version": "0.1.0",
+  "description": "Khet board game for the browser",
   "private": true,
-  "scripts": {
-    "start": "node app"
-  },
+  "main": "app.js",
   "dependencies": {
-    "express": "3.0.3",
+    "express": "3.0.4",
     "jade": "*",
-    "socket.io": "~0.9.11"
+    "socket.io": "~0.9.13"
   }
+  "devDependencies": {
+    "should": "~1.2.1",
+    "mocha": "~1.7.4"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "./node_modules/.bin/mocha -ui tdd test/khet_test.js"
+  },
+  "repository": "https://github.com/yuroller/khetjs.git",
+  "keywords": [
+    "khet",
+    "game",
+    "boardgame",
+    "board game",
+    "laser"
+  ],
+  "authors": {
+    "Yuri Valentini <yv@opycom.it>",
+    "Emanuele Bizzarri <emabiz76@gmail.com>"
+  }
+  "license": "MIT"
 }
