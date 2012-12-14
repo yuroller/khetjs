@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.game = function(req, res){
-  res.render('game',{server_addr: 'http://192.168.20.95'});  
+  res.render('game',{server_addr: 'http://127.0.0.1'});  
 };
 
 exports.credits = function(req, res){
