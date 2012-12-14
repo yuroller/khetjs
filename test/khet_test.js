@@ -7,7 +7,7 @@
  
 'use strict';
 
-var khet = require("../khet");
+var khet = require("./lib/khet");
 var assert = require('assert');
 
 suite('getColorFromSurface', function () {
