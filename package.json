@@ -8,14 +8,14 @@
     "express": "3.0.4",
     "jade": "*",
     "socket.io": "~0.9.13"
-  }
+  },
   "devDependencies": {
     "should": "~1.2.1",
     "mocha": "~1.7.4"
   },
   "scripts": {
     "start": "node app",
-    "test": "./node_modules/.bin/mocha -ui tdd test/khet_test.js"
+    "test": "./node_modules/.bin/mocha test/khet_spec.js"
   },
   "repository": "https://github.com/yuroller/khetjs.git",
   "keywords": [
@@ -25,9 +25,9 @@
     "board game",
     "laser"
   ],
-  "authors": {
+  "authors": [
     "Yuri Valentini <yv@opycom.it>",
     "Emanuele Bizzarri <emabiz76@gmail.com>"
-  }
+  ],
   "license": "MIT"
 }
