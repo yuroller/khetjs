@@ -37,12 +37,12 @@ suite('Surface', function () {
 
 suite('createPieceFromSetup', function () {
   var piecesSetup = [
-    {x: 7, y: 0, t: khet.PieceType.PIRAMID,      c: khet.Color.SILVER,    o: khet.Orientation.SE},
+    {x: 7, y: 0, t: khet.PieceType.PYRAMID,      c: khet.Color.SILVER,    o: khet.Orientation.SE},
     {x: 4, y: 7, t: khet.PieceType.PHARAOH,      c: khet.Color.RED,       o: khet.Orientation.NONE}
   ];
   test('should return piece at (7,0)', function () {
     var p = khet.createPieceFromSetup(piecesSetup, 7, 0);
-    assert.equal(p.getPieceType(), khet.PieceType.PIRAMID);
+    assert.equal(p.getPieceType(), khet.PieceType.PYRAMID);
     assert.equal(p.getColor(), khet.Color.SILVER);
     assert.equal(p.getOrientation(), khet.Orientation.SE);
   });
