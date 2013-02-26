@@ -60,3 +60,35 @@ suite('createPieceFromSetup', function () {
   });
 });
 
+
+///////////////////////////////////////////////////////////////////////////
+// LaserPath
+///////////////////////////////////////////////////////////////////////////
+
+suite('LaserPath.getTilesPositions', function () {
+  var laserGun = new khet.LaserGun(0, 0, khet.LaserDirection.S),
+    laserPath;
+  setup(function () {
+    laserPath = new khet.LaserPath(laserGun);
+  });
+  test('should return gun position when no segment appended', function () {
+    var p = laserPath.getTilesPositions();
+    assert.deepEqual(p, [[0,0]]);
+  });
+  test('should return down tile when appended south segment', function () {
+    laserPath.append(khet.LaserDirection.S);
+    var p = laserPath.getTilesPositions();
+    assert.deepEqual(p, [[0,0], [0,1]]);
+  });
+  test('should return right tile when appended east segment', function () {
+    laserPath.append(khet.LaserDirection.E);
+    var p = laserPath.getTilesPositions();
+    assert.deepEqual(p, [[0,0], [1,0]]);
+  });
+  test('should return down and down-right tile when appended south and east segment', function () {
+    laserPath.append(khet.LaserDirection.S);
+    laserPath.append(khet.LaserDirection.E);
+    var p = laserPath.getTilesPositions();
+    assert.deepEqual(p, [[0,0], [0,1], [1,1]]);
+  });
+});
