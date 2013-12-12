@@ -3,16 +3,12 @@
  * GET home page.
  */
 
-var pieces=require("../pieces");
-
-var b=new pieces.Board(pieces.SURFACE,pieces.SETUP_CLASSIC);
-
 exports.index = function(req, res){
   res.render('index', { title: 'Khetjs' });
 };
 
 exports.game = function(req, res){
-  res.render('game',{board: JSON.stringify(b)});  
+  res.render('game',{server_addr: 'http://127.0.0.1'});  
 };
 
 exports.credits = function(req, res){

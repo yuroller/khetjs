@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , khet = require('./lib/khet');
 
 var app = express();
 
@@ -38,12 +39,36 @@ var server = http.createServer(app)
 
 server.listen(process.env.PORT || 3000);
 
+var board = new khet.Board(khet.SURFACE, khet.SETUP_CLASSIC);
+
+var translitterate = function (p) {
+  if (p.length === 0) {
+    return ' ';
+  } else if (p.length === 2) {
+    if (p[0].t !== p[1].t || p[0].t !== khet.PieceType.OBELISK) {
+      throw new Error('Wrong double pieces');
+    }
+    return p[0].t.toUpperCase();
+  }
+  return p[0].t;
+};
+
+var renderBoard = function (board) {
+  var x, y, r = [], p;
+  for (y = 0; y < khet.BOARD_H; y += 1) {
+    r[y] = [];
+    for (x = 0; x < khet.BOARD_W; x += 1) {
+      p = board[y][x];
+      r[y][x] = translitterate(p.pieces);
+    }
+  }
+  return r;
+};
+
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.on('request_board', function (data) {
+    socket.emit('status_board', renderBoard(board.content));
   });
 });
-
 
 
