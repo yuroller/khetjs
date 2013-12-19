@@ -2,7 +2,7 @@
 
 angular.module("appKhet",[])
 .controller("ctrlMain",["$scope",function($scope){
-    var rows=[1,2,3,4,5,6,7,8];
+    var rows=["1","2","3","4","5","6","7","8"];
     var cols=["a","b","c","d","e","f","g","h","i","j"];
     $scope.notification='';
     $scope.players=[
@@ -22,7 +22,7 @@ angular.module("appKhet",[])
         return false;
 
       for (var i in m){
-        if (i%2){
+        if (i%2 === 0){
           if (cols.indexOf(m[i])<0) return false;
 
         }else{
@@ -40,9 +40,9 @@ angular.module("appKhet",[])
     $scope.go=function(){
       if (!validateMove()){
         $scope.notification="formato non valido";
-        return
-      }      
-      return "mossa eseguita"
+      } else {
+        $scope.notification = "mossa eseguita";
+      }
     }
 
     $scope.canMove=function(){

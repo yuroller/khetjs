@@ -39,7 +39,6 @@ describe('test ctrlMain', function () {
 
       it('se inserisco "a1b1" deve notificare "mossa eseguita"',function(){    
         scope.move="a1b1";
-        debugger;
         scope.go();
         expect(scope.notification).toBe("mossa eseguita");
       });    
